@@ -1,6 +1,6 @@
 ## Motivation 
 
-This dataset was created to provide historical generation data and sensor readings to forecast the solar power generation of two indian power plants for the forthcoming days.
+This dataset was created to provide historical generation data and sensor readings to forecast the solar power generation of two Indian power plants for the forthcoming days.
 This dataset was created by Ani Kannal on Kaggle. (License: Data files © Original Authors) 
 
  
@@ -19,7 +19,7 @@ The instances in this dataset represent observations or readings recorded at 15-
     - TOTAL_YIELD: This is the total yield for the inverter till that point in time.
 There are 21076 instances of each type.
 
-The following plant time records were missing sensor readings, however, the sensor readings before and after these instances were the same, so average of the readings before and after were taken. Relative to the
+The following plant time records were missing sensor readings, however, the sensor readings before and after these instances were the same, so the average of the readings before and after were taken. Relative to the
 size of the dataset (over 140,000 readings), it's impact was negligible.
         - HmiyD2TTLFNqkNe 27.86219 46.63144 0.615273
         - 03/06/2020 14:00 4135001 1IF53ai7Xc0U56Y
@@ -37,7 +37,7 @@ The dataset was gathered by the author at two solar power plants in India over a
 
 Using the notes provided by the source along with initial scanning of the data revealed some early issues. As mentioned above, there were a few blank plant records. However, this was fixed by taking the average of the record after and record before the blank entry. This was possible because the before and after were equal so no complex calculations had to be carried out. 
 The data was merged into Training and Test data. Additional columns were added such as POWER_GENERATED, PG_ONE_HOUR_LAG, PG_TWO_HOUR_LAG, PG_ONNE_HOUR_CHANGE, PG_ONE_DAY_CHANGE, QUARTER_HOUR, HOUR_SIN, HOUR_COS, DailyYieldSameTimeYesterday, DailyYieldRateOfChange, AverageDailyYieldSummary, DependentTemperature, TemperatureIrradiation and TemperatureTImeOfDay. As well as this, features were explored and content was analysed. 
-After carrying out a detailed analysis of the data, it was identified that the energy conversion efficiencies (ratio between AC/DC powers) should be between 93%-98% but when I calculated the efficiencies of both plants they were 9.75% and 97.5% for plant 1 and plant 2 respectively. Exactly one digit off. With a boxplot and some calculations it easy to see that it was a decimal point location error in the DC-POWER values. As a result, the DC_POWER column for plant one was multiplied by 10 in order to correct this.
+After carrying out a detailed analysis of the data, it was identified that the energy conversion efficiencies (ratio between AC/DC powers) should be between 93%-98% but when the efficiencies of both plants were calculated, they were 9.75% and 97.5% for plant 1 and plant 2 respectively. Exactly one digit off. With a boxplot and some calculations it was easy to see that it was a decimal point location error in the DC-POWER values. As a result, the DC_POWER column for plant one was multiplied by 10 in order to correct this.
 
  
 ## Uses
