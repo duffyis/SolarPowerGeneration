@@ -1,6 +1,6 @@
 ## Model Description
 
-**Input:** 
+**Inputs:** 
 'TimeInt', 'QuarterHour', 'HourSIN', 'HourCOS', 'DailyYieldSameTimeYesterdayDiff',
             'AverageDailyYieldSummary', 'DependentTemperature', 
             'TemperatureIrradiation', 'TemperatureTimeOfDay'
@@ -23,7 +23,9 @@ project it will be used for regression. As it is typically more powerful than li
 more complex and can be harder to interpret. This model will be used once the linear regression
 model has been fully explored.
 
-Various techniques have been used to improve features of the Solar data provided to carry out the random forest regression. These include Interaction Features. Using the temperature readings feature were formed by multiplying two (or more) existing features together. These can capture effects between two variables that aren't considered in a model that only includes each variable separately. Time-Series Specific Techniques. As the model is utilising with time series data, techniques specific such as lagging features were used.
+Various techniques have been used to improve features of the Solar data provided to carry out the random forest regression. These include Interaction Features. Using the temperature readings, features were formed by multiplying two (or more) existing features together. These can capture effects between two variables that aren't considered in a model that only includes each variable separately. 
+
+Time-Series Specific Techniques: As the model is utilising with time series data, these techniques such as lagging features were used.
 Others were explored from the variety of optimisation techniques including:
  Feature Scaling
  Feature Selection
@@ -34,9 +36,9 @@ Others were explored from the variety of optimisation techniques including:
 
 The root mean squared error, mean absolute error and mean squared logarithmic error were used to understand how well the model was performing.
 
-On each run there were various ways of enhancing the results. First, increasing the number of decision trees in the forest lead to better model generalization and reduced overfitting, resulting in lower RMSE and MAE. Additionally, tuning the hyperparameters such as the maximum depth of trees, minimum samples per leaf, and number of features considered for each split can optimize the model's predictive capabilities. Feature engineering and selection were also vital; identifying and incorporating relevant features as mentioned in the data sheet significantly impacted the model's performance. 
+On each run there were various ways of enhancing the results. First, increasing the number of decision trees in the forest lead to better model generalization and reduced overfitting, resulting in lower RMSE and MAE. Additionally, tuning the hyperparameters such as the maximum depth of trees, minimum samples per leaf, and number of features considered for each split can optimize the model's predictive capabilities. Feature engineering and selection were also vital; identifying and incorporating relevant features, as mentioned in the data sheet, significantly impacted the model's performance. 
 
-Before tuning manually, a GridSearchCV from scikit-learn was used to automatically perform the hyperparameter tuning. Using different combinations of hyperparameters the idea is to find the best one using cross-validation. This is very time-consuming. The following is some settings used. 
+Before tuning manually, a GridSearchCV from scikit-learn was used to automatically perform the hyperparameter tuning. Using different combinations of hyperparameters the idea is to find the best one using cross-validation. This is very time-consuming. The following were some settings used to optimize this. 
 
 param_grid = {
     'n_estimators': [50, 100],  # Number of trees in the forest
@@ -76,7 +78,7 @@ Printing Comparison
 ![Screenshot](output_3_2.png)
 
 ## Limitations
-- Model interpretability: While individual decision trees are easy to understand and interpret, a Random Forest model, can be quite complex and harder to interpret. This may make it difficult to explain the reasoning behind specific predictions.
+- Model interpretability: While individual decision trees are easy to understand and interpret, a Random Forest model can be quite complex and hard to interpret. This may make it difficult to explain the reasoning behind specific predictions.
 - Training Time: this model can potentially be computationally expensive and time-consuming to train, especially when dealing with large datasets or a high number of trees. As a result, if the dataset was to increase in size, this may cause issues.
 - Memory Usage: models like this can consume a lot of memory, especially if you're using many trees or the trees are very deep. If the dataset was to increase in size, this could potentially limit the use of random forests.
 - Overfitting: Although Random Forests are generally less prone to overfitting compared to individual decision trees due to their ensemble nature, they can still overfit if you're not careful. This can happen when the model becomes too complex or when there is not enough noise in the bootstrapping process of creating the individual trees.
