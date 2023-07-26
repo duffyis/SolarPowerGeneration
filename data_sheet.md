@@ -1,7 +1,3 @@
-# Datasheet Template
-
-As far as you can, complete the model datasheet. If you have got the data from the internet, you may not have all the information you need, but make sure you include all the information you do have. 
-
 ## Motivation 
 
 This dataset was created to provide historical generation data and sensor readings to forecast the solar power generation of two indian power plants for the forthcoming days.
